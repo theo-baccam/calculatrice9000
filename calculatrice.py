@@ -17,7 +17,7 @@ def calcul(input_string):
     longueur_list = len(calcul_list)
     if longueur_list != 3:
         # return est moins disruptif que raise ValueError()
-        return "Avez vous bien mis des espaces entre tous les éléments?"
+        return "Opération ou commande invalide"
 
     num_1 = calcul_list[0]
     operator = calcul_list[1]
