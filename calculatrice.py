@@ -4,8 +4,6 @@ hist = []
 
 
 def calcul(input_string):
-    if input_string == "exit" or "quit":
-        return "Quitting..."
     if input_string == "hist":
         for item in hist:
             print(item)
@@ -13,13 +11,16 @@ def calcul(input_string):
     if input_string == "clear":
         hist.clear()
         return ""
+    
+    if input_string == "quit" or input_string == "exit":
+        return "Quitting...\n"
 
     calcul_list = [value for value in input_string.split(" ")]
 
     longueur_list = len(calcul_list)
     if longueur_list != 3:
         # return est moins disruptif que raise ValueError()
-        return "Opération ou commande invalide"
+        return "Opération ou commande invalide\n"
 
     num_1 = calcul_list[0]
     operator = calcul_list[1]
@@ -29,7 +30,7 @@ def calcul(input_string):
         num_1 and num_1.replace(".", "", 1).isdigit()
         and num_2 and num_2.replace(".", "", 1).isdigit()
     ):
-        return "Nombre invalide"
+        return "Nombre invalide\n"
 
     if operator == "*":
         result = float(num_1) * float(num_2)
@@ -40,7 +41,7 @@ def calcul(input_string):
     elif operator == "-":
         result = float(num_1) - float(num_2)
     else:
-        return f"'{operator}' est invalide"
+        return f"'{operator}' est invalide\n"
 
     string_result = str(result)
     leftover = string_result[-2::1]
@@ -57,6 +58,6 @@ print("Donnez une opération, ou tapez 'hist' pour l'historique:\n")
 while True:
     prompt = input("==> ")
     resultat = calcul(prompt)
+    print(resultat)
     if resultat == "Quitting...":
         break
-    print(resultat)
