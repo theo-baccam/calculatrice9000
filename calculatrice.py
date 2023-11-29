@@ -1,6 +1,12 @@
 import string
 
+hist = []
+
 def calcul(input_string):
+    if input_string == "hist":
+        for item in hist:
+            print(item)
+        return ""
     calcul_list = [ value for value in input_string.split(" ") ]
     longueur_list = len(calcul_list)
     if longueur_list != 3:
@@ -28,13 +34,16 @@ def calcul(input_string):
     string_result = str(result)
     leftover = string_result[-2::1]
     if leftover == ".0":
-        return string_result[0:-2]
-    else:
-        return string_result
+        hist.append(f"{num_1} {operator} {num_2} = {string_result[0:-2]}")
+        return f"= {string_result[0:-2]}\n "
+    else:          
+        hist.append(f"{num_1} {operator} {num_2} = {string_result}")
+        return f"= {string_result}\n "
 
 
+print("Donnez une opération, ou tapez 'hist' pour l'historique:\n")
 while True:
-    prompt = input("Donnez une opération: ")
+    prompt = input("==> ")
 
     resultat = calcul(prompt)
     print(resultat)
