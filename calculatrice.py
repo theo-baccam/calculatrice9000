@@ -4,6 +4,8 @@ hist = []
 
 
 def calcul(input_string):
+    if input_string == "exit" or "quit":
+        return "Quitting..."
     if input_string == "hist":
         for item in hist:
             print(item)
@@ -25,8 +27,7 @@ def calcul(input_string):
 
     if not (
         num_1 and num_1.replace(".", "", 1).isdigit()
-        and
-        num_2 and num_2.replace(".", "", 1).isdigit()
+        and num_2 and num_2.replace(".", "", 1).isdigit()
     ):
         return "Nombre invalide"
 
@@ -56,4 +57,6 @@ print("Donnez une opération, ou tapez 'hist' pour l'historique:\n")
 while True:
     prompt = input("==> ")
     resultat = calcul(prompt)
+    if resultat == "Quitting...":
+        break
     print(resultat)
