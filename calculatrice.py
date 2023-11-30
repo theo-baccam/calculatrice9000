@@ -32,10 +32,16 @@ def calcul(input_string):
     ):
         return "Nombre invalide\n"
 
-    if operator == "*":
+    if operator == "**":
+        result = float(num_1) ** float(num_2)
+    elif operator == "*":
         result = float(num_1) * float(num_2)
     elif operator == "/":
         result = float(num_1) / float(num_2)
+    elif operator == "*":
+        result = float(num_1) // float(num_2)
+    elif operator == "*":
+        result = float(num_1) % float(num_2)
     elif operator == "+":
         result = float(num_1) + float(num_2)
     elif operator == "-":
@@ -59,5 +65,5 @@ while True:
     prompt = input("==> ")
     resultat = calcul(prompt)
     print(resultat)
-    if resultat == "Quitting...":
+    if resultat == "Quitting...\n":
         break
