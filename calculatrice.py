@@ -28,11 +28,25 @@ def calculs(operator, num_1, num_2):
     else:
         return "Opérateur invalide"
 
+print("Calculatrice de Théo Baccam (tapez `help`): ")
 while True:
 
     try:
         prompt = input("==> ")
         processed = input_processor(prompt)
+
+        if processed[0] == "quit" or processed [0] == "exit":
+            print("Calculatrice fermée.")
+            break
+
+
+        if processed[0] == "help":
+            print(
+                "[num_1] + [num_2]\n"
+                "Opérateurs valide: `+`, `-`, `*`, `/`, `**`, `//`, `%`\n"
+                "Pour quitter, `quit`, `exit` ou 'CTRL+C'\n"
+            )
+            continue
 
         if len(processed) != 3:
             print("Opération invalide")
